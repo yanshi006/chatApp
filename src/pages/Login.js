@@ -1,13 +1,12 @@
 import React, { useContext, useState } from "react";
 import firebase from '../config/firebase';
-import { AuthContext } from "./../AuthService";
-import { Link, Redirect } from "react-router-dom";
-import { Title,FormStyle,Lavel,Input,Btn } from "../style";
-// import { FormStyle } from "../style";
-// import { Lavel } from "../style";
-// import { Input } from "../style";
-// import { Btn } from "../style";
-import '../style.css';
+import { AuthContext } from "../components/AuthService";
+import { Redirect } from "react-router-dom";
+import styled from "styled-components";
+import Button from "../components/Button";
+import Title from "../components/Title";
+import InputField from "../components/InputField";
+
 
 //historyは、ページ一つ一つが持つページの情報のことなどが入っている。
 const Login = ({ history }) => {
@@ -47,21 +46,39 @@ const Login = ({ history }) => {
 
   return (
     <>
-      <Title>Login</Title>
+      <Title text='Login' />
       <FormStyle onSubmit={handleSubmit}>
         <p>{error}</p>
-        <div>
+        {/* <div>
           <Lavel htmlFor="email">e-mail</Lavel>
           <Input type="email" name="email" id="email" placeholder="email" required onChange={(e) => setEmail(e.target.value)} />
           <p>{emailError}</p>
-        </div>
-        <div>
+        </div> */}
+        <InputField 
+          type="email"
+          name="email"
+          label="e-mail"
+          placeholder="email"
+          isRequired={true}
+          onChange={(e) => setEmail(e.target.value)}
+          error={emailError}
+          />
+        {/* <div>
           <Lavel htmlFor="password">password</Lavel>
           <Input type="password" name="password" id="password" placeholder="password" required onChange={(e) => setPassword(e.target.value)} />
           <p>{passwordError}</p>
-        </div>
-        <Btn type="submit">ログイン</Btn>
-        <Link className='link-btn' to='/signup'>新規登録</Link>
+        </div> */}
+        <InputField
+          type="password"
+          name="password"
+          label="password"
+          placeholder="password"
+          isRequired={true}
+          onChange={(e) => setPassword(e.target.value)}
+          error={passwordError}
+        />
+        <Button type="submit" label='ログイン' />
+        <Button type='link' to='/signup' label='新規登録' />
       </FormStyle>
       {/* <a></a>だったら、レンダーが起きて遅くなる */}
       {/* <a href="http://localhost:3000/signup">新規登録</a> */}
@@ -71,3 +88,11 @@ const Login = ({ history }) => {
 }
 
 export default Login;
+
+const FormStyle = styled.form`
+  width 30%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #ddd;
+  padding: 40px 0;
+`

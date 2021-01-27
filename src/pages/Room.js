@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Title } from "../style";
 import firebase from '../config/firebase';
-import { AuthContext } from "../AuthService";
-import List from "../List";
+import { AuthContext } from "../components/AuthService";
+import List from "../components/List";
+import Title from "../components/Title";
 
 const Room = () => {
 
@@ -45,7 +45,7 @@ const Room = () => {
 
   return (
     <>
-      <Title>Room</Title>
+      <Title text='Room' />
       <ul>
         {
           messages.map(message => {

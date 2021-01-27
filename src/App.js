@@ -8,8 +8,8 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import { AuthProvider } from "./AuthService";
-import LoggedInRoute from './LoggedInRoute';
+import { AuthProvider } from "./components/AuthService";
+import LoggedInRoute from './components/LoggedInRoute';
 
 const App = () => {
   return (
